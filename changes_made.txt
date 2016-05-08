@@ -1,0 +1,95 @@
+1. Leaked connection warning could be more actionable #2127
+-------------------------------------------------------------
+in ResponseBody.java:
+
+  @Override public void close() throws IOException {
+    source().close();
+
+i have changed  above code into
+
+  @Override public void close() {
+    Util.closeQuietly(source());
+
+someone already made this change.
+
+
+*********************************************************************************************************************************************
+*********************************************************************************************************************************************
+*********************************************************************************************************************************************
+
+
+2. Remove SPDY support #2340
+-------------------------------
+
+
+
+i removed  the word "Protocol.SPDY_3" from from all the files listed below
+
+FramedServer.java
+MockWebServer.java
+OkHttpClient.java
+FramedServer.java
+CallTest.java
+
+
+***********************************************
+
+i have removed all lines that uses spdy from below files:
+
+
+ErrorCode.java
+HeadersMode.java
+NameValueBlockReader.java
+Http2xStream.java
+RealConnection.java
+Platform.java
+Protocol.java
+Http2ConnectionTest.java
+URLConnectionTest.java
+HeadersTest.java
+MockWebServer.java
+ErrorCode.java
+FramedConnection.java
+NameValueBlockReader.java
+
+***********************************************
+i have removed word  spdy from comments for below files:
+
+FrameReader.java
+FrameWriter.java
+Header.java
+Settings.java
+OkHeaders.java
+RequestLine.java
+StreamAllocation.java
+RequestLine.java
+Connection.java
+ConnectionPool.java
+Headers.java
+SettingsTest.java
+SystemPropertiesConnectionPool.java
+Benchmark.java
+SystemPropertiesConnectionPool.java
+
+
+***********************************************
+
+i removed the class completely listed below 
+
+Spdy3.java
+HttpOverHttp2Test.java
+HttpOverSpdyTest.java
+HttpOverSpdy3Test.java
+MockSpdyPeer.java
+Spdy3ConnectionTest.java
+Spdy3Test.java
+ExternalSpdyExample.java
+
+
+
+
+
+
+
+
+
